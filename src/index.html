@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>Unicode Print | Fi Graham</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="./styles/general.css">
+
 </head>
 <body>
 
-  <div id="header">
-
-    <h1>Unicode Print</h1>
-
-    <h2>by Fi Graham</h2>
-  
-    <p>
-      Unicode generative art inspired by 10 PRINT.
-    </p>
-
+  <div class="grid-container">
+    <!-- <div class="grid-item" style="justify-self: right; height: 100%">
+      <h1>Unicode Print</h1>
+      <h2>by Fi Graham</h2>
+    </div> -->
+    <div class="grid-item item1 flex-center">
+      <div id="unicode-title-container"></div>
+      <div class="caption">
+        createdby.fi
+      </div>
+    </div>
+    <div class="grid-item item2 flex-center">
+      <div id="unicode-classic-container"></div>
+      <div class="caption">
+        Classic
+      </div>
+    </div>
+    <div class="grid-item item3 flex-center">
+      <div id="unicode-xs-container"></div>
+      <div class="caption">
+        Xs
+      </div>
+    </div>
+    <div class="grid-item item4 flex-center">
+      <div id="unicode-curves-container"></div>
+      <div class="caption">
+        Curves
+      </div>
+    </div>
   </div>
 
-  <div>
+  <!-- <div class="flex-center">
     <div id="unicode-classic-container"></div>
-  </div>
-
-  <div>
     <div id="unicode-xs-container"></div>
-  </div>
-
-  <div>
     <div id="unicode-curves-container"></div>
   </div>
+
+  <div class="flex-center">
+    
+  </div>
+
+  <div class="flex-center">
+    
+  </div> -->
+
+  <!-- Scripts -->
+  <script src="./title/index.ts"></script>
+  <script src="./classic/index.ts"></script>
+  <script src="./xs/index.ts"></script>
+  <script src="./curves/index.ts"></script>
 
 </body>
 </html>
