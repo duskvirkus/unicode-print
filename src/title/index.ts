@@ -19,7 +19,7 @@ function init(): void {
     } as TerminalConfig,
     title
   );
-  loop.frameRate(15);
+  loop.frameRate(20);
 }
 
 function update(): void {
