@@ -1,6 +1,6 @@
 export interface CheckBoxDOM {
   wrapperDiv: HTMLDivElement,
-  box: HTMLInputElement,
+  box: HTMLButtonElement,
   label: HTMLLabelElement,
   isChecked: boolean,
 }
@@ -11,6 +11,7 @@ export class CheckBoxes {
 
   public boxes: CheckBoxDOM[] = [];
   public checkedOptions: string;
+  public boxesRootDiv: HTMLDivElement;
 
   public receiveOptions: ReceiveOptionsFunction;
 
@@ -20,26 +21,28 @@ export class CheckBoxes {
 
     this.onClick = this.onClick.bind(this);
 
+    this.boxesRootDiv = document.createElement('div');
+    this.boxesRootDiv.classList.add('check-boxes');
+    containerDiv.append(this.boxesRootDiv);
+
     for (let i: number = 0; i < options.length; i++) {
 
       let wrapperDiv: HTMLDivElement = document.createElement('div');
-      containerDiv.append(wrapperDiv);
+      wrapperDiv.classList.add('box-div');
+      this.boxesRootDiv.append(wrapperDiv);
 
-      let box: HTMLInputElement = document.createElement('input');
-      box.setAttribute('type', 'checkbox');
-      box.setAttribute('id', options[i]);
-      box.setAttribute('name', options[i]);
+      let box: HTMLButtonElement = document.createElement('button');
+      box.innerHTML = '☐';
       box.onclick = this.onClick;
       wrapperDiv.append(box);
 
       let label: HTMLLabelElement = document.createElement('label');
       label.innerHTML = options[i];
-      label.setAttribute('for', options[i]);
       wrapperDiv.append(label);
 
       this.boxes.push({
         wrapperDiv: wrapperDiv, 
-        box: box, 
+        box: box,
         label: label, 
         isChecked: false
       } as CheckBoxDOM);
@@ -59,7 +62,12 @@ export class CheckBoxes {
       return;
     }
     this.boxes[index].isChecked = !this.boxes[index].isChecked;
+    this.setBoxInnerHTML(index);
     this.update();
+  }
+
+  protected setBoxInnerHTML(index): void {
+    this.boxes[index].box.innerHTML = this.boxes[index].isChecked ? '☑' : '☐';
   }
 
   protected update(): void {

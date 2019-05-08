@@ -26,7 +26,7 @@ function init(): void {
   );
   loop.frameRate(1000);
 
-  options = ['╭','╮','╯','╰'];
+  options = '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'.split('');
 
   checkBoxes = new CheckBoxes(
     document.getElementById('unicode-interactive-checkboxes') as HTMLDivElement,

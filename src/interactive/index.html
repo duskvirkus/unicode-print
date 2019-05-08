@@ -8,14 +8,17 @@
   <title>Unicode Print | Interactive | createdby.fi</title>
 
   <link rel="stylesheet" href="../styles/general.css">
+  <link rel="stylesheet" href="../styles/interactive.css">
 </head>
 <body>
-  <!-- <a class="back-button" href="../index.html">◄ Back</a> -->
-  <div>
-    <div id="unicode-interactive-checkboxes"></div>
-  </div>
-  <div class="flex-center">
-    <div id="unicode-interactive-container"></div>
+  <a class="back-button" href="../index.html">◄ Back</a>
+  <div class="grid-interactive">
+    <div class="flex-center item1" id="canvas">
+      <div id="unicode-interactive-container"></div>
+    </div>
+    <div class="item2" id="control-panel">
+      <div id="unicode-interactive-checkboxes"></div>
+    </div>
   </div>
   <script src="./index.ts"></script>
 </body>

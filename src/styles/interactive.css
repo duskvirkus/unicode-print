@@ -1,0 +1,34 @@
+.grid-interactive {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 65% 30% 5%;
+}
+
+#control-panel {
+  height: 100%;
+  padding: auto;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+#unicode-interactive-checkboxes {
+  height: 100%;
+}
+
+.check-boxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.box-div {
+  margin: 1rem;
+}
