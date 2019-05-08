@@ -1,3 +1,5 @@
+import { cmap } from 'terminaltxt';
+
 export type ReceivePercentFunction = (percent: number) => void;
 
 export class Slider {
@@ -23,6 +25,7 @@ export class Slider {
 
     this.slider = document.createElement('button');
     this.slider.onclick = this.onClick;
+    this.slider.classList.add('slider');
     this.sliderDiv.append(this.slider);
 
     this.percentLabel = document.createElement('span');
@@ -32,7 +35,7 @@ export class Slider {
   }
 
   protected onClick(event: MouseEvent): void {
-    let percent: number = event.offsetX / event.toElement.clientWidth;
+    let percent: number = cmap(event.offsetX / event.toElement.clientWidth, .05, .95, 0, 1);
     this.updateSlider(percent);
     this.receivePercent(percent);
   }

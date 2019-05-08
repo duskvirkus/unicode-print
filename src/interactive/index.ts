@@ -14,10 +14,6 @@ import {
   Sliders
 } from './Sliders';
 
-import {
-  Slider
-} from './Slider';
-
 let term: OutputTerminal;
 const loop: Loop = new Loop(init, update);
 let characters: string = '';
@@ -25,7 +21,7 @@ let characters: string = '';
 let checkBoxes: CheckBoxes;
 let options: string[];
 
-let slider: Slider;
+let sliders: Sliders;
 
 function init(): void {
   term = new OutputTerminal(
@@ -47,7 +43,7 @@ function init(): void {
     receiveOptions
   );
 
-  slider = new Slider(document.getElementById('unicode-interactive-sliders') as HTMLDivElement, 'Speed', setSpeed);
+  sliders = new Sliders(document.getElementById('unicode-interactive-sliders') as HTMLDivElement);
 }
 
 function update(): void {
@@ -61,8 +57,8 @@ function randomChar(characters: string): string {
 
 function receiveOptions(options: string): void {
   characters = options;
-}
-
-function setSpeed(percent: number): void {
-  loop.frameRate(map(percent, 0, 1, 10, 100));
+  const optionsSplit: string[] = options.split('');
+  for (let i: number = 0; i < optionsSplit.length; i++) {
+    sliders.addSlider(optionsSplit[i]);
+  }
 }

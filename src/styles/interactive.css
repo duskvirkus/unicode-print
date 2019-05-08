@@ -17,7 +17,7 @@ button {
 }
 
 #unicode-interactive-checkboxes {
-  height: 100%;
+  height: 50%;
 }
 
 .check-boxes {
@@ -31,4 +31,8 @@ button {
 
 .box-div {
   margin: 1rem;
+}
+
+.slider {
+  padding: 0.5em;
 }
