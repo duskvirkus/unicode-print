@@ -2,12 +2,21 @@ import {
   OutputTerminal,
   Loop,
   TerminalConfig,
-  random
+  random,
+  map
 } from 'terminaltxt';
 
 import {
   CheckBoxes
 } from './CheckBoxes';
+
+import {
+  Sliders
+} from './Sliders';
+
+import {
+  Slider
+} from './Slider';
 
 let term: OutputTerminal;
 const loop: Loop = new Loop(init, update);
@@ -15,6 +24,8 @@ let characters: string = '';
 
 let checkBoxes: CheckBoxes;
 let options: string[];
+
+let slider: Slider;
 
 function init(): void {
   term = new OutputTerminal(
@@ -26,13 +37,17 @@ function init(): void {
   );
   loop.frameRate(1000);
 
-  options = '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'.split('');
+  options = '─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'.split('');
+
+  // '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'
 
   checkBoxes = new CheckBoxes(
     document.getElementById('unicode-interactive-checkboxes') as HTMLDivElement,
     options,
     receiveOptions
   );
+
+  slider = new Slider(document.getElementById('unicode-interactive-sliders') as HTMLDivElement, 'Speed', setSpeed);
 }
 
 function update(): void {
@@ -46,4 +61,8 @@ function randomChar(characters: string): string {
 
 function receiveOptions(options: string): void {
   characters = options;
+}
+
+function setSpeed(percent: number): void {
+  loop.frameRate(map(percent, 0, 1, 10, 100));
 }
