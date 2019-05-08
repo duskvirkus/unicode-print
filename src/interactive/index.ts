@@ -31,27 +31,12 @@ function init(): void {
 
   control = new ControlPanel(
     document.getElementById('unicode-interactive-control-panel') as HTMLDivElement,
-    '╮╭╯╰╱╲╳'
-    //'─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'
+    '─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'
   );
-  // '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'
 }
 
 function update(): void {
-  // if (count % 300 == 0) {
-  //   if (goal != null) {
-  //     if (control.selected[control.options.indexOf(goal)] === -1) {
-  //       // @ts-ignore
-  //       term.lineController.maxLines--;
-  //     }
-  //   }
-  //   let random = randomChar('╮╭╯╰╱╲╳');//'─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷');
-  //   term.write(random);
-  //   console.log(random);
-  //   goal = random;
-  // } else {
-    term.write(chooseFromSelected());
-  // }
+  term.write(chooseFromSelected());
   count++;
 }
 

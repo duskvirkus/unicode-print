@@ -44,7 +44,7 @@ export class Slider {
   protected updateSlider(percent: number): void {
     let sliderFill: string[] = [];
     for (let i: number = 0; i < (percent - 0.05) * 10; i++) {
-      sliderFill.push('%');
+      sliderFill.push('█');
     }
     for (let i: number = sliderFill.length; i < 10; i++) {
       sliderFill.push(' ');
