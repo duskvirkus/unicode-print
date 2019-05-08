@@ -17,6 +17,7 @@ export class Slider {
     this.receivePercent = receivePercent;
 
     this.sliderDiv = document.createElement('div');
+    this.sliderDiv.classList.add('slider-container');
     parent.append(this.sliderDiv);
 
     this.characterLabel = document.createElement('span');

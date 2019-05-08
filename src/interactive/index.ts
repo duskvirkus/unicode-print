@@ -16,6 +16,9 @@ let characters: string = '';
 
 let control: ControlPanel;
 
+let count = 0;
+let goal = null;
+
 function init(): void {
   term = new OutputTerminal(
     {
@@ -27,14 +30,29 @@ function init(): void {
   loop.frameRate(1000);
 
   control = new ControlPanel(
-    document.getElementById('unicode-interactive-checkboxes') as HTMLDivElement,
-    '─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'
+    document.getElementById('unicode-interactive-control-panel') as HTMLDivElement,
+    '╮╭╯╰╱╲╳'
+    //'─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'
   );
   // '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'
 }
 
 function update(): void {
-  term.write(chooseFromSelected());
+  // if (count % 300 == 0) {
+  //   if (goal != null) {
+  //     if (control.selected[control.options.indexOf(goal)] === -1) {
+  //       // @ts-ignore
+  //       term.lineController.maxLines--;
+  //     }
+  //   }
+  //   let random = randomChar('╮╭╯╰╱╲╳');//'─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷');
+  //   term.write(random);
+  //   console.log(random);
+  //   goal = random;
+  // } else {
+    term.write(chooseFromSelected());
+  // }
+  count++;
 }
 
 function randomChar(characters: string): string {

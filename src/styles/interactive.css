@@ -16,8 +16,8 @@ button {
   outline: none;
 }
 
-#unicode-interactive-checkboxes {
-  height: 50%;
+#unicode-interactive-control-panel {
+  height: 100%;
 }
 
 .check-boxes {
@@ -26,10 +26,23 @@ button {
   justify-content: flex-start;
   align-content: center;
   flex-wrap: wrap;
-  height: 100%;
+  height: 50%;
 }
 
 .box-div {
+  margin: 1rem;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 50%;
+}
+
+.slider-container {
   margin: 1rem;
 }
 

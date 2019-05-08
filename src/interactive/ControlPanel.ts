@@ -22,6 +22,7 @@ export class ControlPanel {
     parent.append(this.boxesDiv);
 
     this.slidersDiv = document.createElement('div');
+    this.slidersDiv.classList.add('sliders');
     parent.append(this.slidersDiv);
 
     this.options = options.split('');
