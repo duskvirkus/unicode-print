@@ -4,6 +4,7 @@ html {
   --number-of-unicode-boxes: 3;
   --sides: calc(var(--unicode-box-size) * 0.8);
   --title-width: 100px;
+  --statement-width: var(--title-width)
 }
 
 html, body {
@@ -14,9 +15,9 @@ html, body {
 }
 
 .grid-container {
-  width: calc(var(--unicode-box-size) * var(--number-of-unicode-boxes) + var(--unicode-gap) * (var(--number-of-unicode-boxes) + 1) + var(--sides));
+  width: calc(var(--unicode-box-size) * var(--number-of-unicode-boxes) + var(--unicode-gap) * (var(--number-of-unicode-boxes) + 1) + var(--sides) + var(--title-width) + var(--statement-width));
   display: grid;
-  grid-template-columns: var(--title-width) var(--unicode-box-size) var(--unicode-box-size) var(--unicode-box-size);
+  grid-template-columns: var(--title-width) var(--unicode-box-size) var(--unicode-box-size) var(--unicode-box-size) var(--statement-width);
   justify-content: center;
   grid-column-gap: var(--unicode-gap);
   height: 100%;
@@ -40,6 +41,10 @@ html, body {
 
 .item4 {
   grid-column: 4 / span 1;
+}
+
+.item5 {
+  grid-column: 5 / span 1;
 }
 
 pre {
