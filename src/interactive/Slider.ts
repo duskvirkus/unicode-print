@@ -1,6 +1,6 @@
 import { cmap } from 'terminaltxt';
 
-export type ReceivePercentFunction = (percent: number) => void;
+export type ReceivePercentFunction = (percent: number, character: string) => void;
 
 export class Slider {
 
@@ -37,7 +37,7 @@ export class Slider {
   protected onClick(event: MouseEvent): void {
     let percent: number = cmap(event.offsetX / event.toElement.clientWidth, .05, .95, 0, 1);
     this.updateSlider(percent);
-    this.receivePercent(percent);
+    this.receivePercent(percent, this.characterLabel.innerHTML);
   }
 
   protected updateSlider(percent: number): void {
@@ -50,6 +50,14 @@ export class Slider {
     }
     this.slider.innerHTML = '|' + sliderFill.join('');
     this.percentLabel.innerHTML = ' ' + Math.floor(percent * 100);
+  }
+
+  public display(display: boolean): void {
+    if (display) {
+      this.sliderDiv.style.display = 'block';
+    } else {
+      this.sliderDiv.style.display = 'none';
+    }
   }
 
 }

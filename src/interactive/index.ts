@@ -7,21 +7,14 @@ import {
 } from 'terminaltxt';
 
 import {
-  CheckBoxes
-} from './CheckBoxes';
-
-import {
-  Sliders
-} from './Sliders';
+  ControlPanel
+} from './ControlPanel';
 
 let term: OutputTerminal;
 const loop: Loop = new Loop(init, update);
 let characters: string = '';
 
-let checkBoxes: CheckBoxes;
-let options: string[];
-
-let sliders: Sliders;
+let control: ControlPanel;
 
 function init(): void {
   term = new OutputTerminal(
@@ -33,21 +26,15 @@ function init(): void {
   );
   loop.frameRate(1000);
 
-  options = '─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'.split('');
-
-  // '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'
-
-  checkBoxes = new CheckBoxes(
+  control = new ControlPanel(
     document.getElementById('unicode-interactive-checkboxes') as HTMLDivElement,
-    options,
-    receiveOptions
+    '─│┄┆┈┊┌┐└┘├┤┬┴┼╌╎━┃┅┇┉┋┏┓┗┛┣┫┳┻╋╍╏╮╭╯╰╱╲╳╴╵╶╷'
   );
-
-  sliders = new Sliders(document.getElementById('unicode-interactive-sliders') as HTMLDivElement);
+  // '─━│┃┄┅┆┇┈┉┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿'
 }
 
 function update(): void {
-  term.write(randomChar(characters));
+  term.write(chooseFromSelected());
 }
 
 function randomChar(characters: string): string {
@@ -55,10 +42,22 @@ function randomChar(characters: string): string {
   return characters.substring(rand, rand + 1);
 }
 
-function receiveOptions(options: string): void {
-  characters = options;
-  const optionsSplit: string[] = options.split('');
-  for (let i: number = 0; i < optionsSplit.length; i++) {
-    sliders.addSlider(optionsSplit[i]);
+function chooseFromSelected(): string {
+  let sum: number = 0;
+  for (let i: number = 0; i < control.selected.length; i++) {
+    if (control.selected[i] !== -1) {
+      sum += control.selected[i];
+    }
   }
+  let r: number = random(sum);
+  for (let i: number = 0; i < control.selected.length; i++) {
+    if (control.selected[i] !== -1) {
+      if (r < control.selected[i]) {
+        return control.options[i]
+      } else {
+        r -= control.selected[i];
+      }
+    }
+  }
+  return '';
 }
