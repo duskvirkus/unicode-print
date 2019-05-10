@@ -21,7 +21,6 @@
     "terminaltxt": "0.0.6"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1",
     "parcel": "^1.12.3",
     "typescript": "^3.4.5"
   }
